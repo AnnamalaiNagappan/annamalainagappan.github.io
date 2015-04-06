@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<head>
+  <title> Time Relativity Using Angular </title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <style>
+    body { padding-top:50px; }
+  </style>
+</head>
+
+<body>
+
+  <!-- apply our app and contoller -->
+  <div class="container" ng-app="timeApp" ng-controller="mainController as main">
+    <div class="jumbotron">
+      <p> Display Time Relatively in Angular </p>
+      <time> {{ main.time }} </time>
+    </div>
+    <!-- show our relative times here -->
+
+    <div class="jumbotron">
+      <p> Relative Time (directive) </p>
+      <time am-time-ago="main.time"></time>
+    </div>
+
+    <div class="jumbotron">
+      <p> Date Format (filter) </p>
+      <time>{{ main.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</time>
+    </div>
+
+    <div class="jumbotron">
+      <p> Calendar Format (filter) </p>
+      <time title="{{ main.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ main.time | amCalendar }}</time>
+    </div>
+  </div>
+
+  <script src="../js/angular.min.js"></script>
+  <script src="../js/moment.min.js"></script>
+  <script src="../js/angular-moment.min.js"></script>
+
+</body>
+
+<script type="text/javascript">
+  // create an angular app and an angular controller
+  angular.module('timeApp', ['angularMoment']).controller('mainController', function() {
+    var vm = this;  // bind the controller to vm ( view-model)
+    vm.time = new Date(); // create a new time variable with the current date
+  })
+</script>
+
+</html>
+

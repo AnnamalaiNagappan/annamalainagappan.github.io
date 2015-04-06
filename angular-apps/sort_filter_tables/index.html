@@ -1,0 +1,56 @@
+<!DOCTYPE html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Table Filtering & Sorting Using Angular </title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/angular.min.js"></script>
+  <script src="../js/app.js"></script>
+  <style>
+    body { padding-top:50px; }
+  </style>
+</head>
+
+<body>
+  <div class="container" ng-app="sortApp" ng-controller="mainController">
+    <div class="jumbotron">
+      <h5> Table Filtering & Sorting Using Angular </h5>
+    </div>
+    <form>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon"></div>
+          <input type="text" class="form-control" placeholder="Search Fish" ng-model="searchFish">
+        </div>
+      </div>
+    </form>
+    <div class="alert alert-info">
+      <p>Sort Type: {{ sortType }}</p>
+      <p>Sort Reverse: {{ sortReverse }}</p>
+      <p>Search Query: {{ searchFish }}</p>
+    </div>
+    <table class="table table-resposive table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th> <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse"> Sushi Roll </a> </th>
+          <th> <a href="#" ng-click="sortType = 'fish'; sortReverse = !sortReverse"> Fish Type </a> </th>
+          <th> <a href="#" ng-click="sortType = 'tastiness'; sortReverse = !sortReverse"> Taste Level </a> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="roll in sushi | orderBy:sortType:sortReverse | filter:searchFish">
+          <td> {{ roll.name }} </td>
+          <td> {{ roll.fish }} </td>
+          <td> {{ roll.tastiness }} </td>
+        </tr>
+      </tbody>
+  </div>
+
+
+</body>
+
+
+</html>
+
