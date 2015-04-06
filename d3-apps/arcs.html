@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title> Arcs </title>
+    <style>
+    path{
+      fill: red;
+      stroke:black;
+      stroke-width:2px;
+    }
+    </style>
+  </head>
+  <body>
+  </body>
+  <script src="../js/d3.min.js"></script>
+  <script>
+  	var arcs=d3.svg.arc()
+      .innerRadius(100).outerRadius(120)
+      .startAngle(-Math.PI / 2).endAngle(Math.PI / 2)
+    d3.select('body').append('svg')
+      .append('path').attr('d',arcs).attr('transform','translate(200,200)')
+  </script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title> Rainbow </title>
+  </head>
+  <body>
+  </body>
+  <script src="../js/d3.min.js"></script>
+  <script>
+    var rainbow=['red','orange','yellow','green','blue','indigo','violet'];
+
+  	var arcs=d3.svg.arc()
+      .innerRadius(30)
+      .outerRadius(function(d,i){ return (rainbow.length-i)*20+30 })
+      .startAngle(-Math.PI / 2).endAngle(Math.PI / 2)
+    d3.select('body').append('svg')
+      .selectAll('path').data(rainbow).enter()
+      .append('path')
+      .attr({
+         d:arcs,
+         transform:'translate(200,200)',
+         fill: function(d){ return d;}
+        })
+  </script>
+</html>

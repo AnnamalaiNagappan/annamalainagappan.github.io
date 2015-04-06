@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title> Bar Graphs </title>
+    <style type="text/css">
+      .bars{
+      	/*background-color: blue;*/
+      	height: 10px;
+      	border-bottom:solid 1px white;
+      	opacity: 0.4;
+      }
+      .bars:hover{
+      	opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+  </body>
+  <script src="../js/d3.min.js"></script>
+  <script>
+
+    d3.csv("../data/Tourism_Statistics_Since_1991.csv", function(error, data) {
+      var visits=[];
+      var year=[];
+      data.forEach(function(d){
+        visits.push(parseInt(d['Foreign Tourist Ariivals in Numbers']));
+        year.push(parseInt(d['Year']));
+
+      });
+  	var data=visits;
+    var scale=d3.scale.linear()
+              .domain([d3.min(visits),d3.max(visits)])
+              .range([20,100]);
+
+    var color=d3.scale.linear()
+              .domain([d3.min(visits),d3.max(visits)])
+              .range(['red','green']);
+
+    d3.select('body').selectAll(".bars").data(data)
+     .enter().append('div')
+     .style('width',function(d){ return (scale(d))+ '%'; })
+     .attr('class','bars')
+     .style('background-color',function(d,i){
+      return color(visits[i]);
+     })
+     .attr('title',function(d,i){
+      return ("YEAR : " + year[i]+" FOREIGHN VISITS : "+visits[i]);
+     })
+    });
+  </script>
+</html>

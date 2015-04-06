@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title> Bar Graphs </title>
+    <style type="text/css">
+      .bars{
+      	background-color: blue;
+      	height: 10px;
+      	border-bottom:solid 1px white;
+      	opacity: 0.4;
+      }
+      .bars:hover{
+      	opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+  </body>
+  <script src="../js/d3.min.js"></script>
+  <script>
+  	var data=d3.range(50);
+    d3.select('body').selectAll(".bars").data(data)
+     .enter().append('div')
+     .style('width',function(d){ return d+ '%'; })
+     .attr('class','bars');
+  </script>
+</html>

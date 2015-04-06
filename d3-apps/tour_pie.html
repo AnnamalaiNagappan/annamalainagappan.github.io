@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title> Tourism Statistics </title>
+  </head>
+  <body>
+  </body>
+  <script src="../js/d3.min.js"></script>
+  <script>
+
+
+
+    d3.csv("../data/Tourism_Statistics_Since_1991.csv", function(error, data) {
+      var visits=[];
+      data.forEach(function(d){
+        visits.push(parseInt(d['Foreign Tourist Ariivals in Numbers']));
+      });
+
+    var color=d3.scale.category20();
+
+    var arc=d3.svg.arc()
+            .innerRadius(100)
+            .outerRadius(200);
+
+    var pie=d3.layout.pie();
+    var arcData=pie(visits);
+
+     d3.select('body').append('svg')
+       .append('g').attr('transform','translate(200,200)')
+       .selectAll('path').data(arcData).enter()
+       .append('path').attr('d',arc)
+       .style('fill',function(d,i){
+        return color(i);
+       })
+      });
+  </script>
+</html>

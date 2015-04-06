@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title> Pie </title>
+  </head>
+  <body>
+  </body>
+  <script src="../js/d3.min.js"></script>
+  <script>
+    var data=[21,42,32,87,19];
+
+    var color=d3.scale.category10();
+
+    var arc=d3.svg.arc()
+            .innerRadius(100)
+            .outerRadius(200);
+
+  	var pie=d3.layout.pie();
+    var arcData=pie(data);
+
+   d3.select('body').append('svg')
+     .append('g').attr('transform','translate(200,200)')
+     .selectAll('path').data(arcData).enter()
+     .append('path').attr('d',arc)
+     .style('fill',function(d,i){
+      return color(i);
+     });
+
+  </script>
+</html>
