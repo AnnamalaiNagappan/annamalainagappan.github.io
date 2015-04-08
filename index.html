@@ -9,6 +9,13 @@
     .gallery_text{
       text-align: center;
     }
+    .gallery_category{
+      text-align: right;
+      color: #542788;
+    }
+    .jumbotron{
+      background-color: rgba(183, 205, 240, 0.38);
+    }
     .jumbotron p{
       font-size: 16px;
     }
@@ -41,11 +48,12 @@
     </form>
     <div class="row-fluid">
       <div class="col-xs-3 col-md-3" ng-repeat="item in gallery_items | filter:searchApps">
-        <a href="{{item.url}}">
-          <div class="jumbotron">
+        <div class="jumbotron">
+          <a href="{{item.url}}">
             <p class="gallery_text"> {{item.title}} </p>
-          </div>
-        </a>
+          </a>
+          <h6 class="gallery_category"> {{item.category}} </h6>
+        </div>
       </div>
     </div>
   </div>
