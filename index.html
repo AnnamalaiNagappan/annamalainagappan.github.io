@@ -15,7 +15,7 @@
     }
     .jumbotron{
       background-color: #FFFFFF;
-      opacity: 0.6;
+      opacity: 0.7;
       border-style:solid;
     }
     .jumbotron p{
@@ -60,7 +60,9 @@
           <a href="{{item.url}}">
             <p class="gallery_text"> {{item.title}} </p>
           </a>
-          <h6 class="gallery_category"> {{item.category}} </h6>
+          <p class="gallery_category">
+            <span class="label label-success"> <i> {{item.category}} </i> </span>
+          </p>
         </div>
       </div>
     </div>
