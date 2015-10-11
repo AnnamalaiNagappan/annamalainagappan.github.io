@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <title> Directives </title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <script src="angular.min.js"></script>
+  <style>
+  .upcase {
+    text-transform: uppercase;
+  }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          Contacts
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row-fluid">
+      <div class="col-xs-12" ng-controller="list">
+       <p> Add to the list </p>
+       <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-xs-6">
+            <input type="text" class="form-control" placeholder="Add your name" ng-model="new_name"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-6">
+            <input type="text" class="form-control" placeholder="Add your age" ng-model="new_age"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-6">
+            <button class="btn btn-xs btn-success" ng-click="add()">ADD</button>
+          </div>
+        </div>
+      </form>
+      <hr>
+      <p> There are {{people.length}} people </p>
+      <form>
+        <div class="form-group">
+          <input type="search" ng-model="search" class="form-control" placeholder="Enter the name to search"></input>
+        </div>
+      </form>
+      <table class="table table-responsive">
+        <thead>
+          <th> Name </th>
+          <th> Age </th>
+          <th> Delete </th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="person in people | filter:search">
+            <td class="upcase"> {{person.name}} </td>
+            <td> {{person.age}}  </td>
+            <td> <button class="btn btn-xs btn-danger" ng-click="remove($index)">x</button> </td> 
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  list=function($scope){
+    $scope.people=[
+    {name:"tom",age:20},
+    {name:"jerry",age:21},
+    {name:"bruce",age:28},
+    {name:"bane",age:30},
+    ];
+  $scope.add=function(){
+    console.log("LL");
+    $scope.people.push({name:$scope.new_name,age:$scope.new_age});
+  }
+  $scope.remove=function(index){
+    $scope.people.splice(index,1);
+  }
+  }
+
+</script>
+</html>

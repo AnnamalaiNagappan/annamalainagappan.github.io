@@ -5,5 +5,6 @@ angular.module('displayApp', [])
       {title: 'Sort | Filter Tables', url: 'angular-apps/sort_filter_tables/index.html', category: 'Angular'},
       {title: 'Invoice', url: 'invoice.html', category: 'Bootstrap'},
       {title: 'Data Sharing', url: 'http://datashare.meteor.com/', category: 'Meteor'},
+      {title: 'Contacts', url: 'angular-apps/contact/index.html', category: 'Angular'},
     ];
   });
